@@ -22,8 +22,7 @@ pipeline {
     stage('SSH') {
       steps {
         sshPublisher(
-          alwaysPublishFromMaster: true,
-        [
+          publishers: [
     sshPublisherDesc(
      configName: "${env.SSH_CONFIG_NAME}",
      verbose: true,
