@@ -19,23 +19,33 @@ pipeline {
       }
     }
 
-    stage('ssh') {
-      steps {
-        sshPublisher(
-            publishers:[
-                sshPublisherDesc(configName:'nodeServer',verbose:true,transfers:[
-                    sshTransfer(
-                        sourceFiles:"abc.tar.gz"
-                        // remoteDirectory:"~" //use "~" will made it create a new ~ dir
-                    ),
-                    sshTransfer(
-                        //exec commands
-                        execCommand: cmd
-                    )
-                ])
-        ])
-      }
-    }
+
+    stage('SSH transfer') {
+ script {
+  sshPublisher(
+   continueOnError: false, failOnError: true,
+   publishers: [
+    sshPublisherDesc(
+     configName: "${env.SSH_CONFIG_NAME}",
+     verbose: true,
+     transfers: [
+      sshTransfer(
+       sourceFiles: "${path_to_file}/${file_name}, ${path_to_file}/${file_name}",
+       removePrefix: "${path_to_file}",
+       remoteDirectory: "${remote_dir_path}",
+       execCommand: "run commands after copy?"
+      )
+     ])
+   ])
+ }
+}
+    
+    
+    
+    
+    
+    
+    
 
   }
 }
