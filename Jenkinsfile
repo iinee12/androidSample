@@ -21,7 +21,7 @@ pipeline {
 
     stage('ssh') {
       steps {
-        sshPublisher(alwaysPublishFromMaster: true)
+        sh 'sh 13.125.253.154'
       }
     }
 
