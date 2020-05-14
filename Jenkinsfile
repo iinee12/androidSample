@@ -21,7 +21,19 @@ pipeline {
 
     stage('ssh') {
       steps {
-        sshPublisher(masterNodeName: 'master', alwaysPublishFromMaster: true)
+        sshPublisher(
+            publishers:[
+                sshPublisherDesc(configName:'nodeServer',verbose:true,transfers:[
+                    sshTransfer(
+                        sourceFiles:"abc.tar.gz"
+                        // remoteDirectory:"~" //use "~" will made it create a new ~ dir
+                    ),
+                    sshTransfer(
+                        //exec commands
+                        execCommand: cmd
+                    )
+                ])
+        ])
       }
     }
 
