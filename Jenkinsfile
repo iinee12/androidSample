@@ -21,6 +21,7 @@ pipeline {
 
     stage('SSH') {
       steps {
+        echo "${env.SSH_CONFIG_NAME}"
         sshPublisher(
           publishers: [
     sshPublisherDesc(
