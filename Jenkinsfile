@@ -19,16 +19,5 @@ pipeline {
       }
     }
 
-    stage('SSH') {
-      steps {
-        publishHTML([      allowMissing: false,      alwaysLinkToLastBuild: false,      keepAll: true,      reportDir: '',      reportFiles: 'index.html',      reportName: "RCov Report"    ])
-      }
-    }
-
-    stage('Artifacts Report') {
-      steps {
-        archiveArtifacts(artifacts: '*/builds/24/htmlreports/*.html', onlyIfSuccessful: true)
-      }
-    }
   }
 }
