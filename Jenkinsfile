@@ -19,10 +19,9 @@ pipeline {
       }
     }
 
-
     stage('history') {
       steps {
-        httpRequest(url: 'http://13.125.253.154:3000/cicdRequest', acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'POST', responseHandle: 'STRING', requestBody: '{"indexNo":${BUILD_ID}, "appVersion":"${EXECUTOR_NUMBER}", "appName":"${JOB_NAME}", "buildUser":"${NODE_NAME}", "appPath":""}')
+        httpRequest(url: 'http://13.125.253.154:3000/cicdRequest', acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'POST', responseHandle: 'STRING', requestBody: '{"indexNo":"${BUILD_ID}", "appVersion":"${EXECUTOR_NUMBER}", "appName":"${JOB_NAME}", "buildUser":"${NODE_NAME}", "appPath":""}')
       }
     }
 
