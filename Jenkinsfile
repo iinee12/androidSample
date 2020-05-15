@@ -21,10 +21,7 @@ pipeline {
 
     stage('SSH') {
       steps {
-        httpRequest 'https://my-json-server.typicode.com/jujumilk3/apitest/posts'
-      }
-      steps {
-          publishHTML (target: [
+        publishHTML (target: [
       allowMissing: false,
       alwaysLinkToLastBuild: false,
       keepAll: true,
@@ -33,6 +30,7 @@ pipeline {
       reportName: "RCov Report"
     ])
       }
+          
     }
 
   }
