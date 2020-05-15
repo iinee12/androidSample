@@ -25,5 +25,10 @@ pipeline {
       }
     }
 
+    stage('Artifacts Report') {
+      steps {
+        archiveArtifacts(artifacts: '*/builds/24/htmlreports/*.html', onlyIfSuccessful: true)
+      }
+    }
   }
 }
