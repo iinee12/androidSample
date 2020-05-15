@@ -19,9 +19,9 @@ pipeline {
       }
     }
 
-    stage('') {
+    stage('history') {
       steps {
-        httpRequest '13.125.253.154:3000/cicdRequest'
+        httpRequest(url: '13.125.253.154:3000/cicdRequest', acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'POST', responseHandle: 'STRING', requestBody: '{"indexNo":1, "appVersion":"2321", "appName":"11", "buildUser":"34", "appPath":"44"}')
       }
     }
 
