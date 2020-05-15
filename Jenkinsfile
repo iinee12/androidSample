@@ -19,5 +19,11 @@ pipeline {
       }
     }
 
+    stage('') {
+      steps {
+        httpRequest '13.125.253.154:3000/cicdRequest'
+      }
+    }
+
   }
 }
